@@ -1,0 +1,437 @@
+<!-- Backup of index.html -->
+<!-- We will restore/reference this when rebuilding the app with React and Vite. -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đỗ Thanh Trúc | Hồ Sơ Năng Lực Số</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --canvas: #fcf9fe;
+            --surface: #ffffff;
+            --accent: #f5e1fd;
+            --accent-hover: #edd1fa;
+            --text-main: #1a1523;
+            --text-muted: #5c546a;
+            
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-serif: 'Lora', serif;
+            
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s ease;
+        }
+
+        /* Base Resets */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--canvas);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Typography & Utility */
+        .font-serif { font-family: var(--font-serif); }
+        .text-accent { color: var(--text-main); }
+        .text-muted { color: var(--text-muted); }
+        .italic { font-style: italic; }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            z-index: 50;
+            background: rgba(252, 249, 254, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(26, 21, 35, 0.05);
+        }
+        .logo { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; text-decoration: none; color: var(--text-main); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-link { 
+            font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-decoration: none; 
+            transition: var(--transition-fast); position: relative;
+        }
+        .nav-link:hover { color: var(--text-main); }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+            background-color: var(--text-main); transition: var(--transition-fast);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Smooth Reveal Animation Classes */
+        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition-smooth); will-change: transform, opacity; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 100ms; }
+        .reveal-delay-2 { transition-delay: 200ms; }
+        .reveal-delay-3 { transition-delay: 300ms; }
+
+        /* Spacing */
+        .section-spacer { padding: 8rem 0; }
+        
+        /* Hero Section */
+        .hero-split {
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; min-height: 90vh; padding-top: 8rem;
+        }
+        @media (max-width: 900px) { .hero-split { grid-template-columns: 1fr; gap: 3rem; } }
+        
+        .profile-photo-wrapper {
+            width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-bottom: 2rem;
+            border: 4px solid var(--surface); box-shadow: 0 10px 20px rgba(26,21,35,0.05);
+        }
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; }
+        
+        .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .hero-subtitle { font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 1.5rem; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 95%; margin-bottom: 2.5rem; line-height: 1.7; }
+        
+        /* Glassmorphic Goals Card */
+        .goals-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 24px 60px rgba(26, 21, 35, 0.05);
+            overflow: hidden;
+        }
+        .goals-card::before {
+            content: ''; position: absolute; inset: 0; background: var(--accent); opacity: 0.15; z-index: -1; border-radius: inherit;
+        }
+        
+        .goal-section { margin-bottom: 2.5rem; }
+        .goal-section:last-child { margin-bottom: 0; }
+        .goal-title { 
+            font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-bottom: 1rem; 
+            display: flex; align-items: center; gap: 8px;
+        }
+        .goal-list { 
+            padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; 
+            display: flex; flex-direction: column; gap: 10px; line-height: 1.5;
+        }
+
+        /* Section Headers */
+        .section-header { margin-bottom: 4rem; max-width: 600px; }
+        .section-header h2 { font-size: 2.5rem; letter-spacing: -0.01em; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* Asymmetric Bento Grid (Text only) */
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 900px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .bento-grid { grid-template-columns: 1fr; } }
+
+        /* Project Card (Text only) */
+        .project-card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(26, 21, 35, 0.06);
+        }
+        .project-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 20px 40px rgba(26, 21, 35, 0.08); 
+            background-color: var(--canvas);
+            border-color: var(--accent);
+        }
+        
+        .project-tag {
+            font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;
+            color: var(--text-muted); margin-bottom: 0.75rem; display: inline-block;
+        }
+        .project-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; margin-bottom: 1rem; }
+        
+        .project-meta-label {
+            font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.06em;
+            color: var(--text-main); margin-bottom: 4px;
+        }
+        .project-desc {
+            font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;
+        }
+        
+        /* PDF Link Button */
+        .pdf-link {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
+            background-color: var(--canvas); color: var(--text-main); border-radius: 8px;
+            text-decoration: none; font-size: 0.85rem; font-weight: 600;
+            border: 1px solid rgba(26, 21, 35, 0.1); transition: var(--transition-fast);
+            margin-top: auto; align-self: flex-start;
+        }
+        .project-card:hover .pdf-link {
+            background-color: var(--text-main); color: var(--surface);
+        }
+
+        /* Reflection Editorial Layout */
+        .reflection-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+        }
+        @media (max-width: 900px) { .reflection-grid { grid-template-columns: 1fr; gap: 3rem; } }
+        
+        .quote-block {
+            padding: 4rem;
+            background-color: var(--accent);
+            border-radius: 24px;
+            position: relative;
+        }
+        .quote-text {
+            font-size: 2.25rem; line-height: 1.3; letter-spacing: -0.01em; color: var(--text-main); margin-bottom: 2rem; position: relative; z-index: 10;
+        }
+        .quote-author { font-size: 1rem; font-weight: 500; }
+        
+        .points-list { display: flex; flex-direction: column; gap: 2.5rem; }
+        .point-item h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; }
+        .point-item p { color: var(--text-muted); line-height: 1.7; }
+
+        /* Footer */
+        .site-footer {
+            padding: 3rem 2rem; border-top: 1px solid rgba(26, 21, 35, 0.06); text-align: center;
+            color: var(--text-muted); font-size: 0.9rem; margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header navigation -->
+    <header class="nav-header">
+        <a href="#" class="logo">Digital<span class="font-serif italic">Portfolio</span></a>
+        <ul class="nav-links">
+            <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+            <li><a href="#projects" class="nav-link">Dự án</a></li>
+            <li><a href="#reflection" class="nav-link">Tổng kết</a></li>
+        </ul>
+    </header>
+
+    <!-- SECTION 1: ABOUT / HERO -->
+    <section id="about" class="container section-spacer">
+        <div class="hero-split">
+            <!-- Left Info -->
+            <div class="hero-content reveal">
+                <!-- VÙNG ẢNH CÁ NHÂN -->
+                <div class="profile-photo-wrapper">
+                    <!-- EDITABLE IMAGE: Thay link src bằng ảnh cá nhân của bạn -->
+                    <img src="https://picsum.photos/seed/avatar/300/300" alt="Đỗ Thanh Trúc" class="profile-photo">
+                </div>
+                
+                <h1 class="hero-title font-serif italic">Đỗ Thanh Trúc.</h1>
+                <p class="hero-subtitle">Sinh viên ngành Ngôn ngữ Anh, Đại học Ngoại ngữ ĐHQGHN.</p>
+                <p class="hero-desc">
+                    Em đam mê học hỏi những điều mới và luôn nỗ lực trau dồi bản thân tốt lên mỗi ngày.
+                </p>
+                
+                <div style="margin-bottom: 2rem;">
+                    <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 8px;">Sở thích</span>
+                    <p style="color: var(--text-main); font-size: 1.05rem;">Nghe nhạc, khám phá những điều thú vị trong cuộc sống, trải nghiệm những điều liên quan đến ngành học, đam mê ăn uống.</p>
+                </div>
+            </div>
+
+            <!-- Right Goals -->
+            <div class="goals-card reveal reveal-delay-2">
+                <div class="goal-section">
+                    <h3 class="goal-title"><i class="ph ph-target"></i> Mục tiêu học tập</h3>
+                    <ul class="goal-list">
+                        <li>Phát triển kỹ năng làm việc nhóm, giao tiếp và quản lý thời gian.</li>
+                        <li>Sử dụng thành thạo các công cụ học tập như Microsoft Office, Google Workspace và các nền tảng học trực tuyến.</li>
+                        <li>Tham gia ít nhất 1-2 câu lạc bộ tiếng Anh hoặc hoạt động ngoại khóa trong năm học.</li>
+                        <li>Tăng cường giao tiếp với giảng viên, bạn bè và người nước ngoài để cải thiện khả năng sử dụng tiếng Anh.</li>
+                        <li>Tìm hiểu các lĩnh vực nghề nghiệp của ngành Ngôn ngữ Anh như biên-phiên dịch, giảng dạy, truyền thông, du lịch, xuất nhập khẩu,...</li>
+                    </ul>
+                </div>
+                
+                <div class="goal-section">
+                    <h3 class="goal-title"><i class="ph ph-compass"></i> Định hướng phát triển</h3>
+                    <ul class="goal-list">
+                        <li>Xây dựng thói quen học tập chủ động trong mọi hoàn cảnh.</li>
+                        <li>Nỗ lực và cải thiện hơn sự tự tin trong giao tiếp.</li>
+                        <li>Rèn luyện các kỹ năng mềm như giao tiếp tốt, tích cực tham gia các hoạt động xã hội,...</li>
+                        <li>Xây dựng hình ảnh cá nhân chuyên nghiệp trên các nền tảng như Linkedin,...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PROJECTS -->
+    <section id="projects" class="container section-spacer">
+        <div class="section-header reveal">
+            <h2 class="font-serif italic">Tuyển tập bài học</h2>
+            <p>Hệ thống 06 dự án minh chứng kỹ năng số. Nhấn vào liên kết để xem tài liệu chi tiết (PDF).</p>
+        </div>
+
+        <div class="bento-grid">
+            <!-- Project 1 -->
+            <div class="project-card reveal">
+                <div>
+                    <span class="project-tag">Bài 01</span>
+                    <h3 class="project-title font-serif">Máy tính và các thiết bị ngoại vi</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Rèn luyện kỹ năng tạo, đổi tên, sao chép, di chuyển, xóa tệp tin và thư mục một cách thành thạo trên hệ điều hành Windows.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thực hiện tìm hiểu các thành phần cơ bản của máy tính (CPU, RAM, ổ cứng,...) và các thiết bị ngoại vi (bàn phím, chuột, máy in, máy chiếu,...). Trình bày dưới dạng báo cáo có hình ảnh minh họa.</p>
+                </div>
+                <a href="pdfs/bai1.pdf" target="_blank" class="pdf-link">
+                    <i class="ph ph-file-pdf"></i> Xem PDF bài tập
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card reveal reveal-delay-1">
+                <div>
+                    <span class="project-tag">Bài 02</span>
+                    <h3 class="project-title font-serif">Khai thác dữ liệu và thông tin</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Phát triển kỹ năng tìm kiếm và đánh giá thông tin học thuật từ các nguồn đáng tin cậy.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thực hiện tìm kiếm, thu thập và đánh giá các nguồn tài liệu liên quan đến chủ đề nghiên cứu từ cơ sở dữ liệu học thuật, tạp chí khoa học, sách chuyên khảo và các nguồn mở. Tổng hợp kết quả dưới dạng bảng đánh giá độ tin cậy của từng nguồn.</p>
+                </div>
+                <a href="pdfs/bai2.pdf" target="_blank" class="pdf-link">
+                    <i class="ph ph-file-pdf"></i> Xem PDF bài tập
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card reveal reveal-delay-2">
+                <div>
+                    <span class="project-tag">Bài 03</span>
+                    <h3 class="project-title font-serif">Tổng quan về trí tuệ nhân tạo</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Phát triển kỹ năng viết prompt hiệu quả để tận dụng tối đa khả năng của các mô hình ngôn ngữ lớn trong học tập.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thiết kế và thử nghiệm các phiên bản prompt cho ba tác vụ học tập phổ biến bằng công cụ AI. So sánh kết quả, phân tích hiệu quả của từng prompt và tổng hợp các nguyên tắc viết prompt hiệu quả.</p>
+                </div>
+                <a href="pdfs/bai3.pdf" target="_blank" class="pdf-link">
+                    <i class="ph ph-file-pdf"></i> Xem PDF bài tập
+                </a>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card reveal">
+                <div>
+                    <span class="project-tag">Bài 04</span>
+                    <h3 class="project-title font-serif">Giao tiếp và hợp tác trong môi trường số</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Thành thạo các công cụ hợp tác trực tuyến và thể hiện năng lực quản lý, điều phối cá nhân trong dự án nhóm.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thực hiện sử dụng các công cụ hợp tác trực tuyến để quản lý công việc cá nhân, cộng tác soạn thảo, lưu trữ tài liệu và trao đổi với nhóm. Ghi lại quá trình thực hiện và đánh giá hiệu quả của các công cụ thông qua báo cáo kèm minh chứng.</p>
+                </div>
+                <a href="pdfs/bai4.pdf" target="_blank" class="pdf-link">
+                    <i class="ph ph-file-pdf"></i> Xem PDF bài tập
+                </a>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card reveal reveal-delay-1">
+                <div>
+                    <span class="project-tag">Bài 05</span>
+                    <h3 class="project-title font-serif">Sáng tạo nội dung số</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Thành thạo việc sử dụng các công cụ AI tạo sinh để hỗ trợ quá trình sáng tạo nội dung số.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thực hiện sáng tạo một sản phẩm nội dung với sự hỗ trợ của các công cụ AI tạo sinh, ghi lại quá trình sử dụng, so sánh kết quả và hoàn thiện sản phẩm thông qua chỉnh sửa, tích hợp đầu ra của AI với ý tưởng cá nhân.</p>
+                </div>
+                <div style="display:flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+                    <a href="pdfs/bai5.pdf" target="_blank" class="pdf-link">
+                        <i class="ph ph-file-pdf"></i> PDF bài tập (1)
+                    </a>
+                    <a href="pdfs/bai5thuhai.pdf" target="_blank" class="pdf-link">
+                        <i class="ph ph-file-pdf"></i> PDF bài tập (2)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card reveal reveal-delay-2">
+                <div>
+                    <span class="project-tag">Bài 06</span>
+                    <h3 class="project-title font-serif">An toàn và liêm chính học thuật trong môi trường số</h3>
+                    <p class="project-meta-label">Mục tiêu</p>
+                    <p class="project-desc">Phát triển kỹ năng sử dụng AI có trách nhiệm và đạo đức trong học tập và nghiên cứu.</p>
+                    <p class="project-meta-label">Tóm tắt thực hiện</p>
+                    <p class="project-desc">Thực hiện nghiên cứu chính sách sử dụng AI trong học thuật, ứng dụng AI hỗ trợ một nhiệm vụ học tập và phân tích các vấn đề đạo đức liên quan. Tổng hợp kết quả thành báo cáo kèm infographic và bộ nguyên tắc sử dụng AI có trách nhiệm.</p>
+                </div>
+                <a href="pdfs/bai6.pdf" target="_blank" class="pdf-link">
+                    <i class="ph ph-file-pdf"></i> Xem PDF bài tập
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: REFLECTION -->
+    <section id="reflection" class="container section-spacer">
+        <div class="reflection-grid">
+            <div class="quote-block reveal">
+                <p class="quote-text font-serif italic">
+                    "Quá trình xây dựng danh mục này giúp tôi hệ thống hóa lại toàn bộ kiến thức kỹ năng số, biến lý thuyết thành sản phẩm thực tế."
+                </p>
+                <div class="quote-author">Đỗ Thanh Trúc</div>
+            </div>
+            
+            <div class="points-list">
+                <div class="point-item reveal reveal-delay-1">
+                    <h4><i class="ph ph-check-circle"></i> Điểm tâm đắc</h4>
+                    <p>Khả năng tổng hợp và trình bày các dữ liệu bài học một cách trực quan. Việc ứng dụng công nghệ để tạo ra một không gian lưu trữ mang đậm dấu ấn cá nhân giúp tôi tự tin hơn vào năng lực số của mình.</p>
+                </div>
+                <div class="point-item reveal reveal-delay-2">
+                    <h4><i class="ph ph-lightning"></i> Thách thức gặp phải</h4>
+                    <p>Việc lựa chọn cách cấu trúc thông tin sao cho dễ tiếp cận nhất đòi hỏi nhiều lần thử nghiệm. Quá trình làm quen với các công cụ phát triển cũng là một rào cản ban đầu cần phải vượt qua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Đỗ Thanh Trúc. Portfolio Kỹ năng số.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll reveal using Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
