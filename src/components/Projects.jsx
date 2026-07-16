@@ -67,7 +67,7 @@ export default function Projects() {
           Tuyển tập bài học
         </h2>
         <p className="text-text-muted text-[1.1rem] leading-relaxed">
-          Hệ thống 06 dự án minh chứng kỹ năng số. Nhấn vào liên kết để xem tài liệu chi tiết (PDF).
+          Hệ thống 06 dự án minh chứng năng lực số. Danh mục gồm 06 dự án tiêu biểu, thể hiện quá trình vận dụng kiến thức và phát triển các kỹ năng số trong học tập và thực hành. Nhấn vào từng liên kết để xem tài liệu minh chứng chi tiết (PDF).
         </p>
       </div>
 
