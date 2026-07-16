@@ -8,9 +8,9 @@ export default function Hero() {
         {/* Left Info */}
         <div className="reveal">
           {/* Profile Photo */}
-          <div className="w-[260px] h-[260px] rounded-3xl overflow-hidden mb-8 border-4 border-surface shadow-lg shadow-text-main/5">
+          <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-8 border-4 border-surface shadow-lg shadow-text-main/5">
             <img
-              src="https://picsum.photos/seed/avatar/300/300"
+              src="/avatar.jpg"
               alt="Đỗ Thanh Trúc"
               className="w-full h-full object-cover"
             />
