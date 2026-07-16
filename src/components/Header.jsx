@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full flex justify-between items-center py-6 px-8 z-50 bg-canvas/85 backdrop-blur-md border-b border-text-main/5">
       <a href="#" className="flex items-center gap-2 no-underline">
-        <img src="/ulis-logo.png" alt="ULIS Logo" className="h-10 w-auto" />
+        <img src="/ulis-logo.png" alt="ULIS Logo" className="h-16 w-auto" />
       </a>
       <ul className="flex gap-10 list-none m-0 p-0">
         <li>
