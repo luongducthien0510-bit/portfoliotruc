@@ -93,8 +93,8 @@ export default function Reflection() {
         </div>
 
         {/* Academic Integrity */}
-        <div className="reveal reveal-delay-4 mt-8 p-10 bg-text-main text-background-main rounded-3xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+        <div className="reveal reveal-delay-4 mt-8 p-10 bg-surface text-text-main border border-text-main/10 rounded-3xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 opacity-5 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
             <ShieldCheck size={240} weight="fill" />
           </div>
           <div className="relative z-10">
@@ -102,7 +102,7 @@ export default function Reflection() {
               <ShieldCheck size={36} weight="fill" />
               Cam kết Liêm chính Học thuật
             </h4>
-            <div className="space-y-4 text-background-main/90 leading-relaxed text-lg">
+            <div className="space-y-4 text-text-muted leading-relaxed text-lg">
               <p>
                 Em tên là <strong>Đỗ Thanh Trúc</strong>, em cam kết mọi nội dung, số liệu và sản phẩm được trình bày trong portfolio này đều phản ánh đúng năng lực và quá trình học tập thực tế của bản thân mình. Trong suốt quá trình thực hiện, em có sử dụng AI như một công cụ hỗ trợ đề gợi ý ý tưởng thiết kế, hỗ trợ sửa lỗi diễn đạt và tối ưu hóa câu từ.
               </p>
