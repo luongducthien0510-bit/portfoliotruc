@@ -7,8 +7,8 @@
   --surface: #ffffff;
   --accent: #D697FF;
   --accent-hover: #C57BFA;
-  --text-main: #1a1523;
-  --text-muted: #5c546a;
+  --text-main: #000000;
+  --text-muted: #1a1523;
 
   --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.3s ease;
@@ -35,7 +35,7 @@ body {
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 600;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
